@@ -19,10 +19,12 @@ $(document).ready(function(){
 			if (player == 'x') { //to check whoes step is now. If it is X player, then
 				$(this).html('<span>x</span>').addClass('x'); // then add X to cell and class, count steps, change player
 				player ='o';
+				$('.line span').text('o');
 				step += 1;
 			} else {
 				$(this).html('<span>o</span>').addClass('o'); //if not - the same for another player
 				player ='x';
+				$('.line span').text('x');
 				step += 1;
 			}
 			$(this).addClass('busy'); // add to this cell class 'busy'
@@ -36,6 +38,7 @@ $(document).ready(function(){
 				sqr3.hasClass('o') && sqr5.hasClass('o') && sqr7.hasClass('o')) {
 				alert('Player O win!'); // if any of this composition works - game is over - O player win
 				unbind();
+				setTimeout(function(){location.reload()},3000);
 			}
 			else if (sqr1.hasClass('x') && sqr2.hasClass('x') && sqr3.hasClass('x') || //the same for X player
 					sqr4.hasClass('x') && sqr5.hasClass('x') && sqr6.hasClass('x') ||
@@ -47,12 +50,14 @@ $(document).ready(function(){
 					sqr3.hasClass('x') && sqr5.hasClass('x') && sqr7.hasClass('x')) {
 				alert('Player X win!');  // if any of this composition works - game is over - X player win
 				unbind();
+				setTimeout(function(){location.reload()},3000);
 			}
 		}
 		else { alert("This cell is busy already. Choose an empty one"); } //if cleck to busy cell
 		if (step == 9) { 
 			unbind(); 
 			alert('Draw. Try one more time'); //if steps are over - draw
+			setTimeout(function(){location.reload()},3000);
 		}; 
 	});
 
